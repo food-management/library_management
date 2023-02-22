@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>{% block title %}Welcome our shop!{% endblock %}</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" />
+    <!-- MDB -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="{{asset("styles/style.css")}}" />
+</head>
+<body>
+
+    <!-- Navbar -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+  <!-- Container wrapper -->
+  <div class="container">    
+    <!-- Toggle button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent1"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent1">      
+      <!-- Navbar brand -->
+      <a class="navbar-brand mt-2 mt-sm-0" href="{{path('homepage')}}">
+        <img
+          src="https://elements-cover-images-0.imgix.net/ac8b87c9-7586-4b99-8168-461d25415bb6?auto=compress%2Cformat&fit=max&w=900&s=63c02c18f22eb084fb6131278f481f41"
+          height="100"
+          alt="Logo"
+          loading="lazy"
+        />
+      </a>
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link " href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('product_show')}}">Product</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{path('book_show')}}">Book</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="{{path('book_show')}}">Book</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="{{path('book_show')}}">Book</a>
+        </li>
+      </ul>
+      <!-- Left links -->      
+    </div>
+    <!-- Collapsible wrapper -->
+    
+    <!-- Right elements -->
+    <div class="d-flex align-items-center" style="margin-top: 50px">
+
+      <!-- Icon -->
+      <a class="nav-link me-3" href="#">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
+      <a class="nav-link me-3" href="{{path('app_login')}}">
+        <i class="fas fa-sign-in-alt"></i>
+      </a>
+    </div>
+    <!-- Right elements -->
+    
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <div style="height: 60px"></div>
+
+{% block body %}
+ <!--Main layout-->
+<main>
+<div class="container">
+  <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark mt-3 mb-5 shadow p-2" style="background-color: #607D8B">
+  <!-- Container wrapper -->
+  <div class="container-fluid" style="margin-top: 50px">
+
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="#">Categories:</a>
+
+    <!-- Toggle button -->
+    <button 
+       class="navbar-toggler" 
+       type="button" 
+       data-bs-toggle="collapse" 
+       data-bs-target="#navbarSupportedContent2">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent2">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <!-- Link -->
+        <li class="nav-item acitve">
+          <a class="nav-link text-white" href="#">All</a>
+        </li>
+
+      </ul>
+
+      <!-- Search -->
+      <form class="w-auto py-1" style="max-width: 12rem">
+        <input type="search" class="form-control rounded-0" placeholder="Search" aria-label="Search">
+      </form>
+
+    </div>
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+
+<!-- Features Start -->
+    <div class="container-fluid feature py-5 pb-lg-0 my-5" style="background-color: #83c5be">
+        <div class="container py-5 pb-lg-0" >
+            <div class="mx-auto text-center mb-3 pb-2" style="max-width: 500px;">
+                <!-- <h6 class="text-uppercase text-secondary">Features</h6> -->
+                <h1 class="display-5 text-white">Why Should You Read!!!</h1>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-3">
+                    <div class="text-white mb-5">
+                        <div class="bg-secondary rounded-pill d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fa fa-star fs-4 text-white"></i>
+                        </div>
+                        <h4 class="text-white">Read books to stimulate the brain</h4>
+                        <!-- <p class="mb-0">Labore justo vero ipsum sit clita erat lorem magna clita</p> -->
+                    </div>
+                    <div class="text-white">
+                        <div class="bg-secondary rounded-pill d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fa fa-star fs-4 text-white"></i>
+                        </div>
+                        <h4 class="text-white">Reading helps reduce stress</h4>
+                        <!-- <p class="mb-0">Labore justo vero ipsum sit clita erat lorem magna clita</p> -->
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="d-block bg-white h-100 text-center p-5 pb-lg-0">
+                        <p>A series of scientific studies have shown that reading books bring many benefits to your mental health, while helping you improve yourself comprehensively.</p>
+                        <img class="img-fluid" src="https://pngimg.com/uploads/book/book_PNG51073.png" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="text-white mb-5">
+                        <div class="bg-secondary rounded-pill d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fa fa-star fs-4 text-white"></i>
+                        </div>
+                        <h4 class="text-white">Read more to help you learn faster</h4>
+                        <!-- <p class="mb-0">Labore justo vero ipsum sit clita erat lorem magna clita</p> -->
+                    </div>
+                    <div class="text-white">
+                        <div class="bg-secondary rounded-pill d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="fa fa-star fs-4 text-white"></i>
+                        </div>
+                        <h4 class="text-white">Read books to help you become a better person</h4>
+                        <!-- <p class="mb-0">Labore justo vero ipsum sit clita erat lorem magna clita</p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Features Start -->
+
+
+  
+<!-- Products -->
+  <section>
+  <div class="text-center">
+    <div class="row">
+      {% for b in book %}
+        <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card">
+          <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+            data-mdb-ripple-color="light">
+            {% set img = b.image %}
+            <img src="{{asset('uploads/'~img)}}"
+              class="w-100" />
+          </div>
+          <div class="card-body">
+            <a href="{{path('book_read',{"id":b.id})}}" class="text-reset">
+              <h5 class="card-title mb-2">{{b.name}}</h5>
+            </a>
+            <h6 class="mb-3 price">{{b.author}}$</h6>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+   
+  </div>
+</section>
+</div>
+</main>
+ <!--Main layout-->
+
+
+{% endblock %}
+
+<footer class="text-center text-white mt-4" style="background-color: #607D8B">
+  
+  <hr class="text-dark">
+  
+  <div class="container">
+    <!-- Section: Social media -->
+    <section class="mb-3">
+      
+      <!-- Facebook -->
+      <a
+        class="btn-link btn-floating btn-lg text-white"
+        href="#!"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-facebook-f"></i
+      ></a>
+
+      <!-- Twitter -->
+      <a
+        class="btn-link btn-floating btn-lg text-white"
+        href="#!"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-twitter"></i
+      ></a>
+
+      <!-- Google -->
+      <a
+        class="btn-link btn-floating btn-lg text-white"
+        href="#!"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-google"></i
+      ></a>
+
+      <!-- Instagram -->
+      <a
+        class="btn-link btn-floating btn-lg text-white"
+        href="#!"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-instagram"></i
+      ></a>
+
+      <!-- YouTube -->
+      <a
+        class="btn-link btn-floating btn-lg text-white"
+        href="#!"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-youtube"></i
+      ></a>
+      <!-- Github -->
+      <a
+        class="btn-link btn-floating btn-lg text-white"
+        href="#!"
+        role="button"
+        data-mdb-ripple-color="dark"
+        ><i class="fab fa-github"></i
+      ></a>
+    </section>
+    <!-- Section: Social media -->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2); text-color: #E0E0E0">
+    © 2023 Copyright: mdbootstrap
+  </div>
+  <!-- Copyright -->
+</footer>
+</body>
+</html>
+
