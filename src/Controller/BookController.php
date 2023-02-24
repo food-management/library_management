@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Book;
 use App\Entity\BookType;
-use App\Entity\ProductType;
 use App\Form\BookForm;
 use App\Repository\BookRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -71,6 +70,47 @@ class BookController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+    public function uploadImageBook($imgFile, SluggerInterface $slugger): ?string{
+        $originalFilename = pathinfo($imgFile->getClientOriginalName(), PATHINFO_FILENAME);
+        $safeFilename = $slugger->slug($originalFilename);
+        $newFilename = $safeFilename.'-'.uniqid().'.'.$imgFile->guessExtension();
+        try {
+            $imgFile->move(
+                $this->getParameter('image_dir'),
+                $newFilename
+            );
+        } catch (FileException $e) {
+            echo $e;
+        }
+        return $newFilename;
+    }
+
+    /**
+     * @Route("/edit/{id}", name="book_edit",requirements={"id"="\d+"})
+     */
+     public function editAction(Request $req, SluggerInterface $slugger): Response
+    {
+        
+        $b = new Book();
+        $form = $this->createForm(BookForm::class, $b);
+
+        $form->handleRequest($req);
+        if($form->isSubmitted() && $form->isValid()){
+            // if($b->getCreated()===null){
+            //     $b->setCreated(new \DateTime());
+            // }
+            $imgFile = $form->get('file')->getData();
+            if ($imgFile) {
+                $newFilename = $this->uploadImage($imgFile,$slugger);
+                $b->setImage($newFilename);
+            }
+            $this->repo->save($b,true);
+            return $this->redirectToRoute('book_show', [], Response::HTTP_SEE_OTHER);
+        }
+        return $this->render("book/form.html.twig",[
+            'form' => $form->createView()
+        ]);
+    }
     public function uploadImage($imgFile, SluggerInterface $slugger): ?string{
         $originalFilename = pathinfo($imgFile->getClientOriginalName(), PATHINFO_FILENAME);
         $safeFilename = $slugger->slug($originalFilename);
@@ -84,6 +124,16 @@ class BookController extends AbstractController
             echo $e;
         }
         return $newFilename;
+    }
+
+    /**
+     * @Route("/delete/{id}",name="book_delete",requirements={"id"="\d+"})
+     */
+    
+    public function deleteAction(Request $request, Book $b): Response
+    {
+        $this->repo->remove($b,true);
+        return $this->redirectToRoute('book_show', [], Response::HTTP_SEE_OTHER);
     }
 
    

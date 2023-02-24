@@ -4,7 +4,7 @@
 
 {% block body %}
   <div className="page-heading pb-2 mt-4 mb-2 ">
-                    <h3>Manager</h3> <a href="{{path('book_create')}}"><button type="button" class="btn btn-outline-primary">Insert</button></a>
+                    <h3>Manager</h3> <a href="{{path('author_create')}}"><button type="button" class="btn btn-outline-primary">Insert</button></a>
                 </div>
                 <div class="page-content">
                 <div class="btn-group" role="group" aria-label="Basic outlined example">
@@ -18,23 +18,23 @@
                           <tr>
                             <th>#</th>
                             <th>Name</th>
-                            <th>Author</th>
-                            <th>Discription</th>
+                            {# <th>Author</th> #}
+                            {# <th>Discription</th> #}
                             {# <th>Quantity</th> #}
-                            <th>Action</th>
+                            {# <th>Action</th> #}
                           </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                          {% for b in book %}
+                          {% for a in author %}
                               <tr>
-                                  <td>{{ b.id}}</td>
-                                  <td>{{ b.name}}</td>
-                                  <td>{{ b.author}}</td>
+                                  <td>{{ a.id}}</td>
+                                  <td>{{ a.name}}</td>
+                                  {# <td>{{ a.author}}</td> #}
                                   {# <td>{{ p.created|date("m/d/Y")}}</td> #}
-                                  <td>{{ b.discription}}</td>
+                                  {# <td>{{ a.discription}}</td> #}
                                   <td>
-                                    <a href="{{path('book_edit',{'id':b.id})}}">Edit</a>
-                                  <a href="{{path('book_delete',{'id':b.id})}}">Delete</a></td>
+                                    {# <a href="{{path('book_edit',{'id':b.id})}}">Edit</a>
+                                  <a href="{{path('book_delete',{'id':b.id})}}">Delete</a></td> #}
                               </tr>
                           {% endfor %}
                           

@@ -11,15 +11,13 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 
-class BookForm extends AbstractType
+class AuthorType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
         $builder
             ->add('name', TextType::class)
-            ->add('author', TextType::class)
-            ->add('discription',TextType::class)
             ->add('file', FileType::class,[
                 'label' => 'Book Image',
                 'required' => false,
