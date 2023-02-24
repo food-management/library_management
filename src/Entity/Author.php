@@ -3,8 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\AuthorRepository;
+<<<<<<< HEAD
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+=======
+>>>>>>> 90e0760cb00980f78cd17fd8be7b4f351dff9850
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AuthorRepository::class)]
@@ -18,6 +21,7 @@ class Author
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
+<<<<<<< HEAD
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
@@ -31,6 +35,11 @@ class Author
 
 
 
+=======
+    #[ORM\Column(length: 255)]
+    private ?string $image = null;
+
+>>>>>>> 90e0760cb00980f78cd17fd8be7b4f351dff9850
     public function getId(): ?int
     {
         return $this->id;
@@ -53,12 +62,17 @@ class Author
         return $this->image;
     }
 
+<<<<<<< HEAD
     public function setImage(?string $image): self
+=======
+    public function setImage(string $image): self
+>>>>>>> 90e0760cb00980f78cd17fd8be7b4f351dff9850
     {
         $this->image = $image;
 
         return $this;
     }
+<<<<<<< HEAD
 
     /**
      * @return Collection<int, Book>
@@ -91,4 +105,6 @@ class Author
     }
 
 
+=======
+>>>>>>> 90e0760cb00980f78cd17fd8be7b4f351dff9850
 }

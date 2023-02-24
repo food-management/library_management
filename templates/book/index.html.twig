@@ -20,9 +20,8 @@
                             <th>Name</th>
                             <th>Author</th>
                             <th>Discription</th>
+                            {# <th>Quantity</th> #}
                             <th>Action</th>
-                            {# <th>Quantity</th>
-                            <th>Action</th> #}
                           </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
@@ -34,8 +33,8 @@
                                   {# <td>{{ p.created|date("m/d/Y")}}</td> #}
                                   <td>{{ b.discription}}</td>
                                   <td>
-                                    <a href="{{path('product_edit',{'id':b.id})}}">Edit</a>
-                                  <a href="{{path('product_delete',{'id':b.id})}}">Delete</a></td>
+                                    <a href="{{path('book_edit',{'id':b.id})}}">Edit</a>
+                                  <a href="{{path('book_delete',{'id':b.id})}}">Delete</a></td>
                               </tr>
                           {% endfor %}
                           
