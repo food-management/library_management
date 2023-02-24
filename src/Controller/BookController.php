@@ -29,7 +29,7 @@ class BookController extends AbstractController
      */
     public function bookshowAction(): Response
     {
-        $book= $this->repo->findAll();
+        $book= $this->repo->BorrowerListShow();
         return $this->render('book/index.html.twig', [
             'book'=>$book
         ]);
@@ -71,6 +71,37 @@ class BookController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+
+
+    /**
+     * @Route("/edit/{id}", name="product_edit",requirements={"id"="\d+"})
+     */
+    public function editAction(Request $req, Book $b,
+    SluggerInterface $slugger): Response
+    {
+        
+        $form = $this->createForm(ProductType::class, $b);   
+
+        $form->handleRequest($req);
+        if($form->isSubmitted() && $form->isValid()){
+
+            // if($b->getCreated()===null){
+            //     $b->setCreated(new \DateTime());
+            // }
+            $imgFile = $form->get('file')->getData();
+            if ($imgFile) {
+                $newFilename = $this->uploadImage($imgFile,$slugger);
+                $b->setImage($newFilename);
+            }
+            $this->repo->save($b,true);
+            return $this->redirectToRoute('product_show', [], Response::HTTP_SEE_OTHER);
+        }
+        return $this->render("product/form.html.twig",[
+            'form' => $form->createView()
+        ]);
+    }
+
     public function uploadImage($imgFile, SluggerInterface $slugger): ?string{
         $originalFilename = pathinfo($imgFile->getClientOriginalName(), PATHINFO_FILENAME);
         $safeFilename = $slugger->slug($originalFilename);
@@ -84,6 +115,16 @@ class BookController extends AbstractController
             echo $e;
         }
         return $newFilename;
+    }
+
+    /**
+     * @Route("/delete/{id}",name="product_delete",requirements={"id"="\d+"})
+     */
+    
+    public function deleteAction(Request $request, Book $b): Response
+    {
+        $this->repo->remove($b,true);
+        return $this->redirectToRoute('product_show', [], Response::HTTP_SEE_OTHER);
     }
 
    

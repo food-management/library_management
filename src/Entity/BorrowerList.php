@@ -20,6 +20,18 @@ class BorrowerList
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $returnDate = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $Status = null;
+
+    #[ORM\ManyToOne(inversedBy: 'borrowerLists')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Book $book = null;
+
+    #[ORM\ManyToOne(inversedBy: 'borrowerLists')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $userbr = null;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -48,4 +60,42 @@ class BorrowerList
 
         return $this;
     }
+
+    public function getStatus(): ?string
+    {
+        return $this->Status;
+    }
+
+    public function setStatus(string $Status): self
+    {
+        $this->Status = $Status;
+
+        return $this;
+    }
+
+    public function getBook(): ?Book
+    {
+        return $this->book;
+    }
+
+    public function setBook(?Book $book): self
+    {
+        $this->book = $book;
+
+        return $this;
+    }
+
+    public function getUserbr(): ?User
+    {
+        return $this->userbr;
+    }
+
+    public function setUserbr(?User $userbr): self
+    {
+        $this->userbr = $userbr;
+
+        return $this;
+    }
+
+   
 }

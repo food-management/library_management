@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -38,6 +40,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     private ?string $gender = null;
+
+    #[ORM\OneToMany(mappedBy: 'userbr', targetEntity: BorrowerList::class, orphanRemoval: true)]
+    private Collection $borrowerLists;
+
+   
+
+    public function __construct()
+    {
+        $this->borrowerLists = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -175,4 +187,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, BorrowerList>
+     */
+    public function getBorrowerLists(): Collection
+    {
+        return $this->borrowerLists;
+    }
+
+    public function addBorrowerList(BorrowerList $borrowerList): self
+    {
+        if (!$this->borrowerLists->contains($borrowerList)) {
+            $this->borrowerLists->add($borrowerList);
+            $borrowerList->setUserbr($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBorrowerList(BorrowerList $borrowerList): self
+    {
+        if ($this->borrowerLists->removeElement($borrowerList)) {
+            // set the owning side to null (unless already changed)
+            if ($borrowerList->getUserbr() === $this) {
+                $borrowerList->setUserbr(null);
+            }
+        }
+
+        return $this;
+    }
+
+   
 }

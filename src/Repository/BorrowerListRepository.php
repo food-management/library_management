@@ -39,6 +39,38 @@ class BorrowerListRepository extends ServiceEntityRepository
         }
     }
 
+//     SELECT bl.id, u.name, b.name, bl.borrowed_date, bl.return_date, bl.status
+// FROM `user` u, `book` b, `borrower_list` bl
+// WHERE u.id=bl.id AND bl.id=b.id
+   /**
+    * @return BorrowerList[] Returns an array of BorrowerList objects
+    */
+   public function BorrowerListShow($value): array
+   {
+    $en = $this->getEntityManager()->getConnection();
+    $sql = '
+        SELECT bl.id, u.name, b.name, bl.borrowed_date, bl.return_date, bl.status
+        FROM `user` u, `book` b, `borrower_list` bl
+        WHERE u.id=bl.id AND bl.id=b.id
+    ';
+    $stmt = $en->prepare($sql);
+    $re = $stmt->executeQuery();
+    return $re->fetchAllAssociative();
+
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
 //    /**
 //     * @return BorrowerList[] Returns an array of BorrowerList objects
 //     */

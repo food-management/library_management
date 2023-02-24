@@ -17,25 +17,28 @@
                         <thead>
                           <tr>
                             <th>#</th>
-                            <th>Name</th>
-                            <th>Author</th>
-                            <th>Discription</th>
-                            <th>Action</th>
+                            <th>User Name</th>
+                            <th>Book Name</th>
+                            <th>Borrowed Date</th>
+                            <th>Return Date</th>
+                            <th>Status</th>
                             {# <th>Quantity</th>
                             <th>Action</th> #}
                           </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
-                          {% for b in book %}
+                          {% for bl in borrowerlist %}
                               <tr>
-                                  <td>{{ b.id}}</td>
-                                  <td>{{ b.name}}</td>
-                                  <td>{{ b.author}}</td>
-                                  {# <td>{{ p.created|date("m/d/Y")}}</td> #}
-                                  <td>{{ b.discription}}</td>
+                                  <td>{{ bl.id}}</td>
+                                  <td>{{ bl.name}}</td>
+                                  <td>{{ bl.name}}</td>
+                                  <td>{{ bl.borrowerdate|date("m/d/Y")}}</td>
+                                  <td>{{ bl.returndate|date("m/d/Y")}}</td>
+                                  <td>{{ bl.status}}</td>
                                   <td>
-                                    <a href="{{path('product_edit',{'id':b.id})}}">Edit</a>
-                                  <a href="{{path('product_delete',{'id':b.id})}}">Delete</a></td>
+                                    <a href="{{path('product_edit',{'id':bl.id})}}">Edit</a>
+                                  {# <a href="{{path('product_delete',{'id':b.id})}}">Delete</a> #}
+                                  </td>
                               </tr>
                           {% endfor %}
                           

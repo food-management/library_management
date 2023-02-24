@@ -48,17 +48,17 @@
         <li class="nav-item active">
           <a class="nav-link " href="#">Home</a>
         </li>
-        <li class="nav-item">
+        {# <li class="nav-item">
           <a class="nav-link" href="{{path('product_show')}}">Product</a>
-        </li>
+        </li> #}
           <li class="nav-item">
           <a class="nav-link" href="{{path('book_show')}}">Book</a>
         </li>
          <li class="nav-item">
-          <a class="nav-link" href="{{path('book_show')}}">Book</a>
+          <a class="nav-link" href="{{path('borrowerlist_show')}}"> List Borrower</a>
         </li>
          <li class="nav-item">
-          <a class="nav-link" href="{{path('book_show')}}">Book</a>
+          <a class="nav-link" href="{{path('book_show')}}">Author</a>
         </li>
       </ul>
       <!-- Left links -->      
@@ -69,9 +69,9 @@
     <div class="d-flex align-items-center" style="margin-top: 50px">
 
       <!-- Icon -->
-      <a class="nav-link me-3" href="#">
+      {# <a class="nav-link me-3" href="#">
         <i class="fas fa-shopping-cart"></i>
-      </a>
+      </a> #}
       <a class="nav-link me-3" href="{{path('app_login')}}">
         <i class="fas fa-sign-in-alt"></i>
       </a>
