@@ -58,7 +58,7 @@
           <a class="nav-link" href="{{path('borrowerlist_show')}}"> List Borrower</a>
         </li>
          <li class="nav-item">
-          <a class="nav-link" href="{{path('book_show')}}">Author</a>
+          <a class="nav-link" href="{{path('author_show')}}">Author</a>
         </li>
       </ul>
       <!-- Left links -->      
@@ -96,7 +96,7 @@
   <div class="container-fluid" style="margin-top: 50px">
 
     <!-- Navbar brand -->
-    <a class="navbar-brand" href="#">Categories:</a>
+    <a class="navbar-brand" href="#">View:</a>
 
     <!-- Toggle button -->
     <button 
@@ -115,7 +115,16 @@
         <li class="nav-item acitve">
           <a class="nav-link text-white" href="#">All</a>
         </li>
-          <a class="nav-link text-black" href="{{path('show_author_list')}}">Author</a>
+        <li class="nav-item acitve">
+          <a class="nav-link text-white" href="#">Comic</a>
+        </li>
+        <li class="nav-item acitve">
+          <a class="nav-link text-white" href="#">Novel</a>
+        </li>
+        <li class="nav-item acitve">
+          <a class="nav-link text-white" href="#">Science</a>
+        </li>
+          {# <a class="nav-link text-black" href="{{path('show_author_list')}}">Author</a> #}
       </ul>
       
       <!-- Search -->

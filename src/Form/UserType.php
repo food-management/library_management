@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -28,6 +29,7 @@ class UserType extends AbstractType
             ->add('address', TextType::class)
             ->add('gender', TextType::class)
             ->add('save', SubmitType::class)
+        
             ;
         }
     

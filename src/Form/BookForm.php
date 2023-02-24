@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -27,9 +27,12 @@ class BookForm extends AbstractType
             ])
             ->add('image', HiddenType::class,[
                 'required'=> false,
+                
             ])
 
             ->add('save', SubmitType::class)
+            
+            ->add('author', EntityType::class, ['class'=>Author::class, 'choice_label'=>'author'])  
             ;
         }
     

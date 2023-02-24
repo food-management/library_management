@@ -3,11 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AuthorRepository;
-<<<<<<< HEAD
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-=======
->>>>>>> 90e0760cb00980f78cd17fd8be7b4f351dff9850
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AuthorRepository::class)]
@@ -21,12 +18,14 @@ class Author
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-<<<<<<< HEAD
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
     #[ORM\OneToMany(mappedBy: 'bookauthor', targetEntity: Book::class, orphanRemoval: true)]
     private Collection $books;
+
+    #[ORM\Column(length: 255)]
+    private ?string $information = null;
 
     public function __construct()
     {
@@ -35,11 +34,6 @@ class Author
 
 
 
-=======
-    #[ORM\Column(length: 255)]
-    private ?string $image = null;
-
->>>>>>> 90e0760cb00980f78cd17fd8be7b4f351dff9850
     public function getId(): ?int
     {
         return $this->id;
@@ -62,17 +56,12 @@ class Author
         return $this->image;
     }
 
-<<<<<<< HEAD
-    public function setImage(?string $image): self
-=======
     public function setImage(string $image): self
->>>>>>> 90e0760cb00980f78cd17fd8be7b4f351dff9850
     {
         $this->image = $image;
 
         return $this;
     }
-<<<<<<< HEAD
 
     /**
      * @return Collection<int, Book>
@@ -104,7 +93,17 @@ class Author
         return $this;
     }
 
+    public function getInformation(): ?string
+    {
+        return $this->information;
+    }
 
-=======
->>>>>>> 90e0760cb00980f78cd17fd8be7b4f351dff9850
+    public function setInformation(string $information): self
+    {
+        $this->information = $information;
+
+        return $this;
+    }
+
+
 }

@@ -1,24 +1,3 @@
-<<<<<<< HEAD
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello AuthorController!{% endblock %}
-
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/library_management/src/Controller/AuthorController.php'|file_link(0) }}">src/Controller/AuthorController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/library_management/templates/author/index.html.twig'|file_link(0) }}">templates/author/index.html.twig</a></code></li>
-    </ul>
-</div>
-=======
 {% extends 'admin.html.twig' %}
 
 {% block title %}Hello ProductController!{% endblock %}
@@ -39,6 +18,7 @@
                           <tr>
                             <th>#</th>
                             <th>Name</th>
+                            <th>information</th>
                             {# <th>Author</th> #}
                             {# <th>Discription</th> #}
                             {# <th>Quantity</th> #}
@@ -50,6 +30,7 @@
                               <tr>
                                   <td>{{ a.id}}</td>
                                   <td>{{ a.name}}</td>
+                                  <td>{{ a.information}}</td>
                                   {# <td>{{ a.author}}</td> #}
                                   {# <td>{{ p.created|date("m/d/Y")}}</td> #}
                                   {# <td>{{ a.discription}}</td> #}
@@ -65,5 +46,4 @@
                 </div>
                 </div>
                 </div>
->>>>>>> 90e0760cb00980f78cd17fd8be7b4f351dff9850
 {% endblock %}

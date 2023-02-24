@@ -28,7 +28,7 @@ class BookController extends AbstractController
      */
     public function bookshowAction(): Response
     {
-        $book= $this->repo->BorrowerListShow();
+        $book= $this->repo->findAll();
         return $this->render('book/index.html.twig', [
             'book'=>$book
         ]);
@@ -70,23 +70,6 @@ class BookController extends AbstractController
             'form' => $form->createView()
         ]);
     }
-<<<<<<< HEAD
-
-
-
-    /**
-     * @Route("/edit/{id}", name="product_edit",requirements={"id"="\d+"})
-     */
-    public function editAction(Request $req, Book $b,
-    SluggerInterface $slugger): Response
-    {
-        
-        $form = $this->createForm(ProductType::class, $b);   
-
-        $form->handleRequest($req);
-        if($form->isSubmitted() && $form->isValid()){
-
-=======
     public function uploadImageBook($imgFile, SluggerInterface $slugger): ?string{
         $originalFilename = pathinfo($imgFile->getClientOriginalName(), PATHINFO_FILENAME);
         $safeFilename = $slugger->slug($originalFilename);
@@ -113,7 +96,6 @@ class BookController extends AbstractController
 
         $form->handleRequest($req);
         if($form->isSubmitted() && $form->isValid()){
->>>>>>> 90e0760cb00980f78cd17fd8be7b4f351dff9850
             // if($b->getCreated()===null){
             //     $b->setCreated(new \DateTime());
             // }
@@ -123,22 +105,12 @@ class BookController extends AbstractController
                 $b->setImage($newFilename);
             }
             $this->repo->save($b,true);
-<<<<<<< HEAD
-            return $this->redirectToRoute('product_show', [], Response::HTTP_SEE_OTHER);
-        }
-        return $this->render("product/form.html.twig",[
-            'form' => $form->createView()
-        ]);
-    }
-
-=======
             return $this->redirectToRoute('book_show', [], Response::HTTP_SEE_OTHER);
         }
         return $this->render("book/form.html.twig",[
             'form' => $form->createView()
         ]);
     }
->>>>>>> 90e0760cb00980f78cd17fd8be7b4f351dff9850
     public function uploadImage($imgFile, SluggerInterface $slugger): ?string{
         $originalFilename = pathinfo($imgFile->getClientOriginalName(), PATHINFO_FILENAME);
         $safeFilename = $slugger->slug($originalFilename);
@@ -155,21 +127,13 @@ class BookController extends AbstractController
     }
 
     /**
-<<<<<<< HEAD
-     * @Route("/delete/{id}",name="product_delete",requirements={"id"="\d+"})
-=======
      * @Route("/delete/{id}",name="book_delete",requirements={"id"="\d+"})
->>>>>>> 90e0760cb00980f78cd17fd8be7b4f351dff9850
      */
     
     public function deleteAction(Request $request, Book $b): Response
     {
         $this->repo->remove($b,true);
-<<<<<<< HEAD
-        return $this->redirectToRoute('product_show', [], Response::HTTP_SEE_OTHER);
-=======
         return $this->redirectToRoute('book_show', [], Response::HTTP_SEE_OTHER);
->>>>>>> 90e0760cb00980f78cd17fd8be7b4f351dff9850
     }
 
    
