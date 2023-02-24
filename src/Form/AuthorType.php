@@ -18,6 +18,7 @@ class AuthorType extends AbstractType
 
         $builder
             ->add('name', TextType::class)
+            ->add('information', TextType::class)
             ->add('file', FileType::class,[
                 'label' => 'Book Image',
                 'required' => false,

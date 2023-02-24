@@ -70,20 +70,6 @@ class BookController extends AbstractController
             'form' => $form->createView()
         ]);
     }
-    public function uploadImageBook($imgFile, SluggerInterface $slugger): ?string{
-        $originalFilename = pathinfo($imgFile->getClientOriginalName(), PATHINFO_FILENAME);
-        $safeFilename = $slugger->slug($originalFilename);
-        $newFilename = $safeFilename.'-'.uniqid().'.'.$imgFile->guessExtension();
-        try {
-            $imgFile->move(
-                $this->getParameter('image_dir'),
-                $newFilename
-            );
-        } catch (FileException $e) {
-            echo $e;
-        }
-        return $newFilename;
-    }
 
     /**
      * @Route("/edit/{id}", name="book_edit",requirements={"id"="\d+"})

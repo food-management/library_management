@@ -69,13 +69,40 @@ use Symfony\Component\String\Slugger\SluggerInterface;
              $a->setImage($newFilename);
          }
          $this->repo->save($a,true);
-         return $this->redirectToRoute('author_create', [], Response::HTTP_SEE_OTHER);
+         return $this->redirectToRoute('author_show', [], Response::HTTP_SEE_OTHER);
         }
         return $this->render("author/form.html.twig",[
          'form' => $form->createView()
         ]);
      }
-     public function uploadImage($imgFile, SluggerInterface $slugger): ?string{
+     
+     /**
+     * @Route("/edit/{id}", name="author_edit",requirements={"id"="\d+"})
+     */
+    public function editAction(Request $req, SluggerInterface $slugger): Response
+    {
+        
+        $a = new Author();
+        $form = $this->createForm(AuthorType::class, $a);
+
+        $form->handleRequest($req);
+        if($form->isSubmitted() && $form->isValid()){
+            // if($b->getCreated()===null){
+            //     $b->setCreated(new \DateTime());
+            // }
+            $imgFile = $form->get('file')->getData();
+            if ($imgFile) {
+                $newFilename = $this->uploadImage($imgFile,$slugger);
+                $a->setImage($newFilename);
+            }
+            $this->repo->save($a,true);
+            return $this->redirectToRoute('author_show', [], Response::HTTP_SEE_OTHER);
+        }
+        return $this->render("author/form.html.twig",[
+            'form' => $form->createView()
+        ]);
+    }
+    public function uploadImage($imgFile, SluggerInterface $slugger): ?string{
         $originalFilename = pathinfo($imgFile->getClientOriginalName(), PATHINFO_FILENAME);
         $safeFilename = $slugger->slug($originalFilename);
         $newFilename = $safeFilename.'-'.uniqid().'.'.$imgFile->guessExtension();
@@ -89,5 +116,16 @@ use Symfony\Component\String\Slugger\SluggerInterface;
         }
         return $newFilename;
     }
+
+    /**
+     * @Route("/delete/{id}",name="author_delete",requirements={"id"="\d+"})
+     */
+    
+    public function deleteAction(Request $request, Author $a): Response
+    {
+        $this->repo->remove($a,true);
+        return $this->redirectToRoute('author_show', [], Response::HTTP_SEE_OTHER);
+    }
+
 
     }
