@@ -81,7 +81,6 @@ class BookController extends AbstractController
             'form' => $form->createView()
         ]);
     }
-   
 
     /**
      * @Route("/edit/{id}", name="book_edit",requirements={"id"="\d+"})

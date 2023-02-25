@@ -77,15 +77,14 @@ use Symfony\Component\String\Slugger\SluggerInterface;
          'form' => $form->createView()
         ]);
      }
-    
-
-    /**
+     
+     /**
      * @Route("/edit/{id}", name="author_edit",requirements={"id"="\d+"})
      */
-    public function editAction(Request $req, SluggerInterface $slugger,Author $a): Response
+    public function editAction(Request $req, SluggerInterface $slugger): Response
     {
         
-        
+        $a = new Author();
         $form = $this->createForm(AuthorType::class, $a);
 
         $form->handleRequest($req);
