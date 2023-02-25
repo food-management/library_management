@@ -134,6 +134,20 @@ class BookTypeController extends AbstractController
         return $this->redirectToRoute('booktype_show', [], Response::HTTP_SEE_OTHER);
     }
 
+    /**
+     * @Route("/bookCategory/{type}", name="bookCategory")
+     */
+    
+     public function bookCategoryAction($type): Response
+     {
+        $category = $this->repo->FilterBook($type);
+        // return $this->json($category);
+        return $this->render('book/show.html.twig', [
+            'category'=>$category
+        ]);
+     }
+ 
+
   
 }
 

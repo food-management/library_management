@@ -114,13 +114,13 @@
         </li>
 
          <li class="nav-item acitve">
-          <a class="nav-link text-white" href="#">Comic</a>
+          <a class="nav-link text-white" href="/booktype/bookCategory/2">Self-help</a>
         </li>
         <li class="nav-item acitve">
-          <a class="nav-link text-white" href="#">Novel</a>
+          <a class="nav-link text-white" href="/booktype/bookCategory/4">Romance</a>
         </li>
         <li class="nav-item acitve">
-          <a class="nav-link text-white" href="#">Science</a>
+          <a class="nav-link text-white" href="/booktype/bookCategory/3">Science</a>
         </li>
       </ul>
       <!-- Search -->
@@ -142,19 +142,20 @@
   <section>
   <div class="text-center">
     <div class="row">
-      {% for b in book %}
+      {% for c in category %}
         <div class="col-lg-3 col-md-6 mb-4">
         <div class="card">
           <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
             data-mdb-ripple-color="light">
-            {% set img = b.image %}
+            {% set img = c.image %}
             <img src="{{asset('uploads/'~img)}}"
               class="w-100" />
           </div>
           <div class="card-body">
-            <a href="{{path('author_read',{"id":b.id})}}" class="text-reset">
-              <h5 class="card-title mb-2">{{b.name}}</h5>
+            <a href="{{path('book_read',{"id":c.id})}}" class="text-reset">
+              <h5 class="card-title mb-2">{{c.name}}</h5>
             </a>
+            <h6 class="mb-3 price">Author:{{c.name}}</h6>
           </div>
         </div>
       </div>
@@ -166,7 +167,6 @@
 </div>
 </main>
  <!--Main layout-->
-
 
 {% endblock %}
 

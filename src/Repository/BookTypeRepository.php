@@ -39,6 +39,46 @@ class BookTypeRepository extends ServiceEntityRepository
         }
     }
 
+   /**
+    * @return BookType[] Returns an array of BookType objects
+    */
+   public function FilterBook($type): array
+   {
+       return $this->createQueryBuilder('bt')
+    //    SELECT b.image, b.id, b.name, a.name, bt.book_category
+    //    FROM `book` b, `book_type` bt, `author` a
+    //    WHERE b.bookauthor_id = a.id AND b.booktype_id = bt.id
+
+           ->select('book.image, book.id, book.name, author.name')
+
+           ->innerJoin('bt.books', 'book')
+           ->innerJoin('book.bookauthor', 'author')
+
+           ->andWhere('bt.id = :val')
+           ->setParameter('val', $type)
+        //    ->orderBy('b.id', 'ASC')
+        //    ->setMaxResults(10)
+           ->getQuery()
+           ->getArrayResult()
+       ;
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //    /**
 //     * @return BookType[] Returns an array of BookType objects
 //     */

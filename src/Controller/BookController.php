@@ -38,9 +38,9 @@ class BookController extends AbstractController
      */
     public function bookListShowAction(): Response
     {
-        $book= $this->repo->findAll();
+        $category= $this->repo->findAll();
         return $this->render('book/show.html.twig', [
-            'book'=>$book
+            'category'=>$category
         ]);
     }
 
