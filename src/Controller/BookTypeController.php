@@ -134,6 +134,6 @@ class BookTypeController extends AbstractController
         return $this->redirectToRoute('booktype_show', [], Response::HTTP_SEE_OTHER);
     }
 
-   
+  
 }
 

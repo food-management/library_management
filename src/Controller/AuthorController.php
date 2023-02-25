@@ -28,7 +28,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
         public function authorshowAction(): Response
         {
             $author= $this->repo->findAll();
-            return $this->render('author/show.html.twig', [
+            return $this->render('author/index.html.twig', [
                 'author'=>$author
             ]);
         }
@@ -40,7 +40,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
     public function showAuthorList(): Response
     {
         $author= $this->repo->findAll();
-        return $this->render('author/index.html.twig', [
+        return $this->render('author/show.html.twig', [
             'author'=>$author
         ]);
     }   
@@ -55,36 +55,40 @@ use Symfony\Component\String\Slugger\SluggerInterface;
         ]);
     }
 
-     /**
+    /**
      * @Route("/add", name="author_create")
      */
     public function createAction(Request $req, SluggerInterface $slugger): Response
     {
-        $a = new Author();
-        $form = $this->createForm(AuthorType::class, $a);   
- 
-        $form->handleRequest($req);
-        if($form->isSubmitted() && $form->isValid()){
-         $imgFile = $form->get('file')->getData();
-         if ($imgFile) {
-             $newFilename = $this->uploadImage($imgFile,$slugger);
-             $a->setImage($newFilename);
-         }
-         $this->repo->save($a,true);
-         return $this->redirectToRoute('author_show', [], Response::HTTP_SEE_OTHER);
-        }
-        return $this->render("author/form.html.twig",[
-         'form' => $form->createView()
-        ]);
-     }
-     
-     /**
-     * @Route("/edit/{id}", name="author_edit",requirements={"id"="\d+"})
-     */
-    public function editAction(Request $req, SluggerInterface $slugger): Response
-    {
         
         $a = new Author();
+        $form = $this->createForm(BookForm::class, $a);
+
+        $form->handleRequest($req);
+        if($form->isSubmitted() && $form->isValid()){
+            // if($b->getCreated()===null){
+            //     $b->setCreated(new \DateTime());
+            // }
+            $imgFile = $form->get('file')->getData();
+            if ($imgFile) {
+                $newFilename = $this->uploadImage($imgFile,$slugger);
+                $a->setImage($newFilename);
+            }
+            $this->repo->save($a,true);
+            return $this->redirectToRoute('author_show', [], Response::HTTP_SEE_OTHER);
+        }
+        return $this->render("author/form.html.twig",[
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/edit/{id}", name="author_edit",requirements={"id"="\d+"})
+     */
+     public function editAction(Request $req, SluggerInterface $slugger,Author $a): Response
+    {
+        
+        
         $form = $this->createForm(AuthorType::class, $a);
 
         $form->handleRequest($req);
@@ -118,6 +122,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
         }
         return $newFilename;
     }
+
 
     /**
      * @Route("/delete/{id}",name="author_delete",requirements={"id"="\d+"})
