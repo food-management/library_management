@@ -85,14 +85,19 @@
               </a>
 
             
-              <a href="{{path('product_show')}}" class="menu-link menu-toggle">
+              <a href="{{path('borrowerlist_show')}}" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
                 <div>List Borrower</div>
               </a>
 
-              <a href="{{path('author_show')}}" class="menu-link menu-toggle">
+              <a href="{{path('show_author_list')}}" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
                 <div>Author</div>
+              </a>
+              <li class="menu-item">
+              <a href="{{path('booktype_create')}}" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <div>Book Type</div>
               </a>
               {# <ul class="menu-sub">
                 <li class="menu-item">
@@ -195,7 +200,7 @@
                       <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="auth-login-basic.html">
+                      <a class="dropdown-item" href="{{path('app_logout')}}">
                         <i class="bx bx-power-off me-2"></i>
                         <span class="align-middle">Log Out</span>
                       </a>

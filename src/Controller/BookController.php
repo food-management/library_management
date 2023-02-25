@@ -33,6 +33,17 @@ class BookController extends AbstractController
             'book'=>$book
         ]);
     }
+    /**
+     * @Route("/bookListShow", name="bookListShow")
+     */
+    public function bookListShowAction(): Response
+    {
+        $book= $this->repo->findAll();
+        return $this->render('book/show.html.twig', [
+            'book'=>$book
+        ]);
+    }
+
 
     /**
      * @Route("/{id}", name="book_read",requirements={"id"="\d+"})
@@ -70,28 +81,15 @@ class BookController extends AbstractController
             'form' => $form->createView()
         ]);
     }
-    public function uploadImageBook($imgFile, SluggerInterface $slugger): ?string{
-        $originalFilename = pathinfo($imgFile->getClientOriginalName(), PATHINFO_FILENAME);
-        $safeFilename = $slugger->slug($originalFilename);
-        $newFilename = $safeFilename.'-'.uniqid().'.'.$imgFile->guessExtension();
-        try {
-            $imgFile->move(
-                $this->getParameter('image_dir'),
-                $newFilename
-            );
-        } catch (FileException $e) {
-            echo $e;
-        }
-        return $newFilename;
-    }
+   
 
     /**
      * @Route("/edit/{id}", name="book_edit",requirements={"id"="\d+"})
      */
-     public function editAction(Request $req, SluggerInterface $slugger): Response
+     public function editAction(Request $req, SluggerInterface $slugger,Book $b): Response
     {
         
-        $b = new Book();
+        
         $form = $this->createForm(BookForm::class, $b);
 
         $form->handleRequest($req);

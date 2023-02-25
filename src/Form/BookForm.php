@@ -2,6 +2,8 @@
 
 namespace App\Form;
 
+use App\Entity\Author;
+use App\Entity\BookType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -18,21 +20,27 @@ class BookForm extends AbstractType
 
         $builder
             ->add('name', TextType::class)
-            ->add('author', TextType::class)
+            ->add('bookauthor', EntityType::class,[
+                'class'=>Author::class,
+                'choice_label'=>'name'
+            ])
             ->add('discription',TextType::class)
             ->add('file', FileType::class,[
                 'label' => 'Book Image',
                 'required' => false,
                 'mapped' => false
             ])
+            ->add('booktype', EntityType::class,[
+                'class'=>BookType::class,
+                'choice_label'=>'bookCategory'
+            ])
             ->add('image', HiddenType::class,[
                 'required'=> false,
                 
             ])
-
             ->add('save', SubmitType::class)
             
-            ->add('author', EntityType::class, ['class'=>Author::class, 'choice_label'=>'author'])  
+            // ->add('author', EntityType::class, ['class'=>Author::class, 'choice_label'=>'author'])  
             ;
         }
     

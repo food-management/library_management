@@ -58,7 +58,10 @@
           <a class="nav-link" href="{{path('borrowerlist_show')}}"> List Borrower</a>
         </li>
          <li class="nav-item">
-          <a class="nav-link" href="{{path('author_show')}}">Author</a>
+          <a class="nav-link" href="{{path('show_author_list')}}">Author</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('booktypeList')}}">Book Type</a>
         </li>
       </ul>
       <!-- Left links -->      
@@ -113,16 +116,11 @@
 
         <!-- Link -->
         <li class="nav-item acitve">
-          <a class="nav-link text-white" href="#">All</a>
+          <a class="nav-link text-white" href="{{path('bookListShow')}}">Book</a>
         </li>
-        <li class="nav-item acitve">
-          <a class="nav-link text-white" href="#">Comic</a>
-        </li>
-        <li class="nav-item acitve">
-          <a class="nav-link text-white" href="#">Novel</a>
-        </li>
-        <li class="nav-item acitve">
-          <a class="nav-link text-white" href="#">Science</a>
+       
+         <li class="nav-item acitve">
+          <a class="nav-link text-white" href="{{path('author_show')}}">Author</a>
         </li>
           {# <a class="nav-link text-black" href="{{path('show_author_list')}}">Author</a> #}
       </ul>
@@ -158,7 +156,7 @@
             <a href="{{path('book_read',{"id":b.id})}}" class="text-reset">
               <h5 class="card-title mb-2">{{b.name}}</h5>
             </a>
-            <h6 class="mb-3 price">Author:{{b.author}}</h6>
+            <h6 class="mb-3 price">Author:{{b.bookauthor}}</h6>
           </div>
         </div>
       </div>

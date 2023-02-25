@@ -20,7 +20,7 @@
                             <th>Name</th>
                             <th>Author</th>
                             <th>Description</th>
-                            {# <th>Quantity</th> #}
+                            <th>Category</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -29,8 +29,8 @@
                               <tr>
                                   <td>{{ b.id}}</td>
                                   <td>{{ b.name}}</td>
-                                  <td>{{ b.author}}</td>
-                                  {# <td>{{ p.created|date("m/d/Y")}}</td> #}
+                                  <td>{{ b.bookauthor.name}}</td>
+                                  <td>{{ b.booktype.bookCategory}}</td>
                                   <td>{{ b.discription}}</td>
                                   <td>
                                     <a href="{{path('book_edit',{'id':b.id})}}">Edit</a>

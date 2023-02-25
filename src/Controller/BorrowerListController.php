@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\BorrowerList;
+use App\Form\BorrowerListType;
 use App\Repository\BorrowerListRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -49,7 +50,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
         {
             
             $bl = new BorrowerList();
-            $form = $this->createForm(BorrowerListForm::class, $bl);
+            $form = $this->createForm(BorrowerListType::class, $bl);
     
             $form->handleRequest($req);
             if($form->isSubmitted() && $form->isValid()){
@@ -64,7 +65,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
                 $this->repo->save($bl,true);
                 return $this->redirectToRoute('borrowerlist_show', [], Response::HTTP_SEE_OTHER);
             }
-            return $this->render("borrowerist/form.html.twig",[
+            return $this->render("borrower_list/form.html.twig",[
                 'form' => $form->createView()
             ]);
         }
@@ -78,11 +79,10 @@ use Symfony\Component\String\Slugger\SluggerInterface;
         SluggerInterface $slugger): Response
         {
             
-            $form = $this->createForm(ProductType::class, $bl);   
+            $form = $this->createForm(BorrowerListType::class, $bl);   
     
             $form->handleRequest($req);
             if($form->isSubmitted() && $form->isValid()){
-    
                 // if($b->getCreated()===null){
                 //     $b->setCreated(new \DateTime());
                 // }
@@ -94,7 +94,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
                 $this->repo->save($bl,true);
                 return $this->redirectToRoute('borrowerlist_show', [], Response::HTTP_SEE_OTHER);
             }
-            return $this->render("borrowerlist/form.html.twig",[
+            return $this->render("borrower_list/form.html.twig",[
                 'form' => $form->createView()
             ]);
         }
