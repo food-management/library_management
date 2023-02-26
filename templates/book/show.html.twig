@@ -52,14 +52,14 @@
           <a class="nav-link" href="{{path('book_show')}}">Book</a>
         </li>
           <li class="nav-item">
+          <a class="nav-link" href="{{path('author_show')}}">Author</a>
+        </li>
+          <li class="nav-item">
           <a class="nav-link" href="{{path('borrowerlist_show')}}">List Borrower</a>
         </li>
          <li class="nav-item">
-          <a class="nav-link" href="{{path('show_author_list')}}">Author</a>
+          <a class="nav-link" href="{{path('booktype_show')}}">Book Type</a>
         </li>
-         {# <li class="nav-item">
-          <a class="nav-link" href="{{path('book_show')}}">Book</a>
-        </li> #}
       </ul>
       <!-- Left links -->      
     </div>
@@ -93,7 +93,7 @@
   <div class="container-fluid" style="margin-top: 50px">
 
     <!-- Navbar brand -->
-    <a class="navbar-brand" href="#">View:</a>
+    <a class="navbar-brand" href="{{path('homepage')}}">View:</a>
 
     <!-- Toggle button -->
     <button 
