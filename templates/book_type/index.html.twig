@@ -30,10 +30,7 @@
                               <tr>
                                   <td>{{ bt.id}}</td>
                                   <td>{{ bt.bookCategory}}</td>
-                                  {# <td>{{ a.information}}</td> #}
-                                  {# <td>{{ a.author}}</td> #}
-                                  {# <td>{{ p.created|date("m/d/Y")}}</td> #}
-                                  {# <td>{{ a.discription}}</td> #}
+                                  
                                   <td>
                                     <a href="{{path('booktype_edit',{'id':bt.id})}}">Edit</a>
                                   <a href="{{path('booktype_delete',{'id':bt.id})}}">Delete</a></td>

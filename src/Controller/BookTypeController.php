@@ -44,7 +44,16 @@ class BookTypeController extends AbstractController
             'booktypes'=>$booktype
         ]);
     }
-
+    /**
+          * @Route("/showbooktype", name="showbooktype")
+          */
+          public function showBookType(): Response
+          {
+          $booktype= $this->repo->findAll();
+          return $this->render('book_type/show.html.twig', [
+              'booktype'=>$booktype
+          ]);
+          }  
 
     /**
      * @Route("/{id}", name="booktype_read",requirements={"id"="\d+"})
