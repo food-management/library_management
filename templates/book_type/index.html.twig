@@ -1,12 +1,10 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Hello ProductController!{% endblock %}
+{% block title %}Book Type Page!{% endblock %}
 
 {% block body %}
-  <div className="page-heading pb-2 mt-4 mb-2 "  style="text-align:center;"> 
-                    <h3><strong>Book Type Manager</strong></h3> 
-                    </div>
-                    <div <a href="{{path('booktype_create')}}"><button type="button" class="btn btn-outline-primary">Insert</button></a>
+  <div className="page-heading pb-2 mt-4 mb-2 ">
+                    <h3>Book Type Manager</h3> <a href="{{path('booktype_create')}}"><button type="button" class="btn btn-outline-primary">Insert</button></a>
                 </div>
                 <div class="page-content">
                 <div class="btn-group" role="group" aria-label="Basic outlined example">
