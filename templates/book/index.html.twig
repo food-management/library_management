@@ -3,8 +3,10 @@
 {% block title %}Hello ProductController!{% endblock %}
 
 {% block body %}
-  <div className="page-heading pb-2 mt-4 mb-2 ">
-                    <h3>Manager</h3> <a href="{{path('book_create')}}"><button type="button" class="btn btn-outline-primary">Insert</button></a>
+  <div className="page-heading pb-2 mt-4 mb-2" style="text-align:center;"> 
+                    <h3><strong>Book Manager</strong></h3> 
+                    </div>
+                    <div <a href="{{path('book_create')}}"><button type="button" class="btn btn-outline-primary">Insert</button></a>
                 </div>
                 <div class="page-content">
                 <div class="btn-group" role="group" aria-label="Basic outlined example">
@@ -16,7 +18,7 @@
                       <table class="table table-striped">
                         <thead>
                           <tr>
-                            <th>#</th>
+                            <th>ID</th>
                             <th>Name</th>
                             <th>Author</th>
                             <th>Description</th>
