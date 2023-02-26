@@ -39,6 +39,28 @@ class BookRepository extends ServiceEntityRepository
         }
     }
 
+   /**
+    * @return Book[] Returns an array of Book objects
+    */
+   public function SearchBookByName($value): array
+   {
+    // SELECT b.image, b.id, b.name, b.bookauthor_id
+    // FROM `book` b  
+    // WHERE b.name LIKE "%C%"
+       return $this->createQueryBuilder('b')
+           ->select('b.image, b.id, b.name, author.name')
+          
+           ->innerJoin('b.bookauthor', 'author')
+
+           ->andWhere('b.name LIKE :val')
+           ->setParameter('val', '%'.$value.'%')
+
+           ->getQuery()
+           ->getArrayResult()
+       ;
+   }
+
+
 //    /**
 //     * @return Book[] Returns an array of Book objects
 //     */

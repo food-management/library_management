@@ -32,6 +32,16 @@ use Symfony\Component\String\Slugger\SluggerInterface;
                 'borrowerlist'=>$borrowerlist
             ]);
         }
+          /**
+          * @Route("/showborrowerlist", name="showborrowerlist")
+          */
+        public function showBorrowerList(): Response
+        {
+        $borrowerlist= $this->repo->findAll();
+        return $this->render('borrower_list/show.html.twig', [
+            'borrowerlist'=>$borrowerlist
+        ]);
+        }   
     
         /**
          * @Route("/{id}", name="borrowerlist_read",requirements={"id"="\d+"})
@@ -114,14 +124,14 @@ use Symfony\Component\String\Slugger\SluggerInterface;
             return $newFilename;
         }
     
-        // /**
-        //  * @Route("/delete/{id}",name="product_delete",requirements={"id"="\d+"})
-        //  */
+        /**
+         * @Route("/delete/{id}",name="borrowerlist_delete",requirements={"id"="\d+"})
+         */
         
-        // public function deleteAction(Request $request, BorrowerList $bl): Response
-        // {
-        //     $this->repo->remove($bl,true);
-        //     return $this->redirectToRoute('product_show', [], Response::HTTP_SEE_OTHER);
-        // }
+        public function deleteAction(Request $request, BorrowerList $bl): Response
+        {
+            $this->repo->remove($bl,true);
+            return $this->redirectToRoute('borrowerlist_show', [], Response::HTTP_SEE_OTHER);
+        }
     
 }

@@ -37,7 +37,7 @@
                                   <td>{{ bl.status}}</td>
                                   <td>
                                     <a href="{{path('borrowerlist_edit',{'id':bl.id})}}">Edit</a>
-                                  {# <a href="{{path('product_delete',{'id':b.id})}}">Delete</a> #}
+                                  <a href="{{path('borrowerlist_delete',{'id':bl.id})}}">Delete</a>
                                   </td>
                               </tr>
                           {% endfor %}

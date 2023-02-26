@@ -49,10 +49,10 @@ class BookTypeRepository extends ServiceEntityRepository
     //    FROM `book` b, `book_type` bt, `author` a
     //    WHERE b.bookauthor_id = a.id AND b.booktype_id = bt.id
 
-           ->select('book.image, book.id, book.name, author.name')
+           ->select('b.image, b.id, b.name, author.name')
 
-           ->innerJoin('bt.books', 'book')
-           ->innerJoin('book.bookauthor', 'author')
+           ->innerJoin('bt.books', 'b')
+           ->innerJoin('b.bookauthor', 'author')
 
            ->andWhere('bt.id = :val')
            ->setParameter('val', $type)
