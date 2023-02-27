@@ -62,7 +62,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
     {
         
         $a = new Author();
-        $form = $this->createForm(BookForm::class, $a);
+        $form = $this->createForm(AuthorType::class, $a);
 
         $form->handleRequest($req);
         if($form->isSubmitted() && $form->isValid()){

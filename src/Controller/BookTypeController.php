@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
     /**
-     * @Route("/")
+     * @Route("/booktype")
      */
 class BookTypeController extends AbstractController
 {
@@ -25,7 +25,7 @@ class BookTypeController extends AbstractController
       $this->repo = $repo;
    }
     /**
-     * @Route("/booktype", name="booktype_show")
+     * @Route("/", name="booktype_show")
      */
     public function bookshowAction(): Response
     {
