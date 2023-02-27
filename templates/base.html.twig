@@ -14,7 +14,40 @@
       class="navbar navbar-expand-lg navbar-light bg-light"
       style="height: 70px;"
     >
-      <a class="navbar-brand" href="{{path('homepage')}}">Home</a>
+      {# <a class="navbar-brand" href="{{path('homepage')}}">Home</a>
+       #}
+         <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent1">      
+      <!-- Navbar brand -->
+      <a class="navbar-brand mt-2 mt-sm-0" href="{{path('homepage')}}">
+        <img
+          src="https://elements-cover-images-0.imgix.net/ac8b87c9-7586-4b99-8168-461d25415bb6?auto=compress%2Cformat&fit=max&w=900&s=63c02c18f22eb084fb6131278f481f41"
+          height="100"
+          alt="Logo"
+          loading="lazy"
+        />
+      </a>
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link " href="{{path('homepage')}}"><b>Home</b></a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{path('book_show')}}"><b>Book</b></a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="{{path('author_show')}}"><b>Author</b></a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="{{path('borrowerlist_show')}}"><b>List Borrower</b></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('booktypeList')}}"><b>Book Type</b></a>
+        </li>
+      </ul>
+      <!-- Left links -->      
+    </div>
+    <!-- Collapsible wrapper -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
       <ul class="nav navbar-nav navbar-right">
         {% if app.user %}

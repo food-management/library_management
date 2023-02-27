@@ -32,7 +32,7 @@
           <a class="nav-link text-black" href="{{path('bookListShow')}}"><b>Book</b></a>
         </li>
         <li class="nav-item acitve">
-          <a class="nav-link text-black" href="{{path('show_author_list')}}"><b>Author</b></a>
+          <a class="nav-link text-black" href="{{path('showauthorlist')}}"><b>Author</b></a>
         </li>
         <li class="nav-item acitve">
           <a class="nav-link text-black" href="{{path('showborrowerlist')}}"><b>List Borrower</b></a>
@@ -44,7 +44,7 @@
       </ul>
       
       <!-- Search -->
-      <form class="w-auto py-1" style="max-width: 12rem" action="{{path('app_search')}}">
+      <form class="w-auto py-1" style="max-width: 12rem" action="{{path('SearchByName')}}">
         <input type="search" class="form-control rounded-0" placeholder="Search" aria-label="Search" name="name">
       </form>
 

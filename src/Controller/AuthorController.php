@@ -35,7 +35,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
         
      /**
-     * @Route("/showauthorlist", name="show_author_list")
+     * @Route("/showauthorlist", name="showauthorlist")
      */
     public function showAuthorList(): Response
     {
