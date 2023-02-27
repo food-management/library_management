@@ -10,12 +10,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SearchController extends AbstractController
 {
-    #[Route('/search', name: 'app_search')]
-    public function index(BookRepository $repo, Request $req): Response
+    /**
+     * @Route("/search", name="SearchByName")
+     */
+    public function SearchByNameAction(BookRepository $repo, Request $req): Response
     {
         $name = $req->query->get('name');
         $book = $repo->SearchBookByName($name);
-        return $this->render('book/show.html.twig', [
+        return $this->render('home.html.twig', [
             'book'=>$book
         ]);
         // return $this->json($search);

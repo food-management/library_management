@@ -48,9 +48,7 @@ class BookRepository extends ServiceEntityRepository
     // FROM `book` b  
     // WHERE b.name LIKE "%C%"
        return $this->createQueryBuilder('b')
-           ->select('b.image, b.id, b.name, author.name')
-          
-           ->innerJoin('b.bookauthor', 'author')
+           ->select('b.image, b.id, b.name')
 
            ->andWhere('b.name LIKE :val')
            ->setParameter('val', '%'.$value.'%')

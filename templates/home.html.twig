@@ -126,7 +126,7 @@
         </li>
       </ul>
       <!-- Search -->
-      <form class="w-auto py-1" style="max-width: 12rem" action="{{path('app_search')}}">
+      <form class="w-auto py-1" style="max-width: 12rem" action="{{path('SearchByName')}}">
         <input type="search" class="form-control rounded-0" placeholder="Search" aria-label="Search" name="name">
       </form>
 
@@ -212,13 +212,13 @@
             data-mdb-ripple-color="light">
             {% set img = b.image %}
             <img src="{{asset('uploads/'~img)}}"
-              class="w-100" />
+              class="w-100" style="height: 400px"/>
           </div>
           <div class="card-body">
             <a href="{{path('book_read',{"id":b.id})}}" class="text-reset">
               <h5 class="card-title mb-2">{{b.name}}</h5>
             </a>
-            <h6 class="mb-3 price">Author:{{b.bookauthor}}</h6>
+            {# <h6 class="mb-3 price">Author:{{b.bookauthor}}</h6> #}
           </div>
         </div>
       </div>
