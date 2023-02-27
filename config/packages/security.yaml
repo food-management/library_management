@@ -33,7 +33,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/book/Index|^/author|^/borrowerlist|^/booktype/booktypeList, roles: ROLE_ADMIN }
-        - { path: ^/bookListShow|^/showauthorlist|^/showbooktype, roles: ROLE_USER }
+        - { path: ^/bookListShow|^/showbooktype, roles: ROLE_USER }
 
 when@test:
     security:
