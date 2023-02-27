@@ -1,10 +1,10 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Hello ProductController!{% endblock %}
+{% block title %} Author Page !{% endblock %}
 
 {% block body %}
   <div className="page-heading pb-2 mt-4 mb-2 ">
-                    <h3>Manager</h3> <a href="{{path('author_create')}}"><button type="button" class="btn btn-outline-primary">Insert</button></a>
+                    <h3>Author Manager</h3> <a href="{{path('author_create')}}"><button type="button" class="btn btn-outline-primary">Insert</button></a>
                 </div>
                 <div class="page-content">
                 <div class="btn-group" role="group" aria-label="Basic outlined example">
@@ -16,7 +16,7 @@
                       <table class="table table-striped">
                         <thead>
                           <tr>
-                            <th>#</th>
+                            <th>ID</th>
                             <th>Name</th>
                             <th>Information</th>
                             {# <th>Author</th> #}

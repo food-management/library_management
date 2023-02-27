@@ -24,7 +24,7 @@ class BookController extends AbstractController
       $this->repo = $repo;
    }
     /**
-     * @Route("/", name="book_show")
+     * @Route("/Index", name="book_show")
      */
     public function bookshowAction(): Response
     {

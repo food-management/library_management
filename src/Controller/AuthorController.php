@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
-     * @Route("/author")
+     * @Route("/")
      */
     class AuthorController extends AbstractController
     {
@@ -23,7 +23,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
           $this->repo = $repo;
        }
      /**
-     * @Route("/", name="author_show")
+     * @Route("/author", name="author_show")
      */
         public function authorshowAction(): Response
         {
